@@ -4,4 +4,5 @@ include 'task'
 include 'device'
 include 'quotes'
 include 'customer'
+include 'uploader'
 
