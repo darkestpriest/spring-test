@@ -5,4 +5,5 @@ include 'device'
 include 'quotes'
 include 'customer'
 include 'uploader'
+include 'controller'
 
