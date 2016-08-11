@@ -1,4 +1,5 @@
 rootProject.name = 'spring-test'
 include 'rest'
 include 'task'
+include 'device'
 
