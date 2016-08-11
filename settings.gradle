@@ -3,4 +3,5 @@ include 'rest'
 include 'task'
 include 'device'
 include 'quotes'
+include 'customer'
 
