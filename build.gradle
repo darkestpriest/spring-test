@@ -90,3 +90,29 @@ jar {
                 'Implementation-Version': version
     }
 }
+//Multijar
+group 'com.cardinal'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+dependencies {
+
+    compile project(':custom-tools')
+    compile project(':custom-objects')
+}
+
+subprojects.each { subproject -> evaluationDependsOn( subproject.path ) }
+jar.dependsOn subprojects.tasks['jar']
+jar {
+    baseName = 'avisports'
+    manifest {
+        attributes 'Implementation-Title': 'avisports',
+                'Implementation-Version': version
+    }
+    subprojects.each { subproject ->
+        from subproject.buildDir.absolutePath + '/classes/java/main'
+    }
+}
