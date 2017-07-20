@@ -116,3 +116,35 @@ jar {
         from subproject.buildDir.absolutePath + '/classes/java/main'
     }
 }
+//Jar with automatic deployment
+group 'com.cardinal'
+version '1.0'
+
+def jarPath = 'C:\\Users\\maperez\\Documents\\OracleSitesJumpStart\\JSK_EE\\apache-tomcat-7.0.65-sites\\webapps\\sites\\WEB-INF\\lib'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+dependencies {
+    compile files( jarPath + '/sites-cs.jar')
+    compile files( jarPath + '/sites-app.jar')
+    compile files( jarPath + '/sites-asset-api.jar')
+}
+
+defaultTasks 'copyJarToBin'
+
+jar {
+    println('Creating jar file')
+    manifest {
+        attributes 'Implementation-Title': 'custom-objects',
+                'Implementation-Version': version
+    }
+}
+
+task copyJarToBin(type: Copy) {
+    println('Creating and deploy artifact:')
+    from jar
+    println('Publishing jar')
+    into jarPath
+}
